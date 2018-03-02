@@ -14,6 +14,7 @@ rel = lambda *x: os.path.abspath(os.path.join(os.path.dirname(__file__), *x))
 
 global_rooms = {}
 
+logging.basicConfig(level=logging.DEBUG)
 
 class Room(object):
     def __init__(self, name, clients=[]):
@@ -26,7 +27,7 @@ class Room(object):
 
 class MainHandler(RequestHandler):
     def get(self):
-        room = str(uuid.uuid4().get_hex().upper()[0:6])
+        room = uuid.uuid4().hex.upper()[0:6]
         self. redirect('/room/'+room)
 
 
@@ -77,8 +78,8 @@ def main():
         (r'/ws/([^/]*)', EchoWebSocket),
     ], **settings)
 
-    application.listen(address='127.0.0.1', port=8080)
-    logging.info("Started listening at 127.0.0.1:8080.")
+    application.listen(address='127.0.0.1', port=9090)
+    logging.info("Started listening at 127.0.0.1:9090.")
     IOLoop.instance().start()
 
 
