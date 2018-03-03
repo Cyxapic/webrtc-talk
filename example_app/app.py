@@ -19,7 +19,7 @@ global_rooms = {}
 logging.basicConfig(level=logging.DEBUG)
 
 class Room(object):
-    def __init__(self, name, clients=[]):
+    def __init__(self, name, video, clients=[]):
         self.name = name
         self.clients = clients
 
@@ -44,11 +44,11 @@ class RoomHandler(RequestHandler):
 
 
 class EchoWebSocket(WebSocketHandler):
-    def open(self, slug):
+    def open(self, slug, video):
         if slug in global_rooms:
             global_rooms[slug].clients.append(self)
         else:
-            global_rooms[slug] = Room(slug, [self])
+            global_rooms[slug] = Room(slug, video, [self])
         self.room = global_rooms[slug]
         if len(self.room.clients) > 2:
             self.write_message('fullhouse')

@@ -25,6 +25,7 @@ function init() {
     let v = window.location.href.split('/')
     let video_cam;
     if (v[v.length-1] == 'YES') {video_cam = true } else { video_cam = false }
+    console.log('video_cam='+video_cam);
     var constraints = {
         audio: true,
         video: video_cam
