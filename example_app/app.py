@@ -83,7 +83,7 @@ def main():
         (r'/', MainHandler),
         (r'/enter-room/([^/]*)', RoomGenerateHandler),
         (r'/room/([^/]*)/([^/]*)', RoomHandler),
-        (r'/ws/([^/]*)', EchoWebSocket),
+        (r'/ws/([^/]*)/([^/]*)', EchoWebSocket),
     ], **settings)
 
     application.listen(address=IP, port=PORT)
