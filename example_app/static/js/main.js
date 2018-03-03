@@ -22,9 +22,12 @@ ws.onmessage = initiatorCtrl;
 
 
 function init() {
+    let v = window.location.href.split('/')
+    let video_cam;
+    if (v[v.length-1] == 'YES') {video_cam = true } else { video_cam = false }
     var constraints = {
         audio: true,
-        video: true
+        video: video_cam
     };
     getUserMedia(constraints, connect, fail);
 }

@@ -29,12 +29,17 @@ class Room(object):
 
 class MainHandler(RequestHandler):
     def get(self):
+        self.render('index.html')
+
+
+class RoomGenerateHandler(RequestHandler):
+    def get(self, video):
         room = uuid.uuid4().hex.upper()[0:6]
-        self. redirect('/room/'+room)
+        self.redirect(f'/room/{room}/{video}')
 
 
 class RoomHandler(RequestHandler):
-    def get(self, slug):
+    def get(self, slug, video):
         self.render('room.html')
 
 
@@ -76,7 +81,8 @@ def main():
 
     application = Application([
         (r'/', MainHandler),
-        (r"/room/([^/]*)", RoomHandler),
+        (r'/enter-room/([^/]*)', RoomGenerateHandler),
+        (r'/room/([^/]*)/([^/]*)', RoomHandler),
         (r'/ws/([^/]*)', EchoWebSocket),
     ], **settings)
 
