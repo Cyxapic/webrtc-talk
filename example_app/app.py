@@ -66,6 +66,9 @@ class EchoWebSocket(WebSocketHandler):
 
 
 def main():
+    IP = "192.168.11.197"
+    PORT = 9090
+
     settings = dict(
         template_path=rel('templates'),
         static_path=rel('static'),
@@ -78,8 +81,8 @@ def main():
         (r'/ws/([^/]*)', EchoWebSocket),
     ], **settings)
 
-    application.listen(address='127.0.0.1', port=9090)
-    logging.info("Started listening at 127.0.0.1:9090.")
+    application.listen(address=IP, port=PORT)
+    logging.info(f"Started listening at {IP}:{PORT}.")
     IOLoop.instance().start()
 
 
