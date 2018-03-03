@@ -24,7 +24,7 @@ ws.onmessage = initiatorCtrl;
 function init() {
     var constraints = {
         audio: true,
-        video: false //i'll dont have cam (
+        video: true
     };
     getUserMedia(constraints, connect, fail);
 }
