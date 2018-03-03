@@ -31,7 +31,9 @@ function init() {
 
 
 function connect(stream) {
-    pc = new RTCPeerConnection(null);
+    // STUN SERVER GOOGEL
+    var pc_config = {"iceServers": [{"urls": "stun:stun.l.google.com:19302"}]};
+    pc = new RTCPeerConnection(pc_config);
 
     if (stream) {
         pc.addStream(stream);

@@ -1,4 +1,4 @@
-var RTCPeerConnection = null;
+//var RTCPeerConnection = null;
 var getUserMedia = null;
 var attachMediaStream = null;
 var reattachMediaStream = null;
@@ -9,16 +9,6 @@ if (navigator.mozGetUserMedia) {
 
   webrtcDetectedBrowser = "firefox";
 
-  // The RTCPeerConnection object.
-  RTCPeerConnection = mozRTCPeerConnection;
-
-  // The RTCSessionDescription object.
-  RTCSessionDescription = mozRTCSessionDescription;
-
-  // The RTCIceCandidate object.
-  RTCIceCandidate = mozRTCIceCandidate;
-
-  // Get UserMedia (only difference is the prefix).
   // Code from Adam Barth.
   getUserMedia = navigator.mozGetUserMedia.bind(navigator);
 

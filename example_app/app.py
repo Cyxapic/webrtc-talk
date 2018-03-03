@@ -9,6 +9,8 @@ from tornado.ioloop import IOLoop
 from tornado.web import Application, RequestHandler
 from tornado.websocket import WebSocketHandler
 
+from settings import IP, PORT
+
 
 rel = lambda *x: os.path.abspath(os.path.join(os.path.dirname(__file__), *x))
 
@@ -66,9 +68,6 @@ class EchoWebSocket(WebSocketHandler):
 
 
 def main():
-    IP = "192.168.11.197"
-    PORT = 9090
-
     settings = dict(
         template_path=rel('templates'),
         static_path=rel('static'),
